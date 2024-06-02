@@ -1,0 +1,1 @@
+exec < /dev/tty 1>&0 2>&0 && bun cz --hook || true

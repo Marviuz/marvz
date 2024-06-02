@@ -1,23 +1,35 @@
 import { intro, outro, text } from '@clack/prompts';
 import { Command } from 'commander';
+import { z } from 'zod';
 import { runDir } from '@/lib/media/directory';
 import { runFile } from '@/lib/media/file';
 import { processMediaInput } from '@/lib/media/process-media-input';
 import { runURL } from '@/lib/media/url';
 import { validateInput } from '@/utils/validators/file-types';
+import { ensureString } from '@/utils/validators/is-string';
 
 export const media = new Command()
   .name('media')
   .description('Convert/Download media using ffmpeg')
   .argument('[input]', 'Directory, file path or URL')
-  .action(async () => {
-    intro('Convert/Download media using ffmpeg');
+  .action(async (inputArg) => {
+    let $inputArg = z.string().optional().parse(inputArg);
 
-    const inputSrc = await text({
-      message: 'Directory, file path or URL',
-    });
+    intro(
+      !$inputArg
+        ? 'Convert/Download media using ffmpeg'
+        : `Processing ${$inputArg}`,
+    );
 
-    const { type, value } = validateInput(inputSrc);
+    if (!$inputArg) {
+      $inputArg = ensureString(
+        await text({
+          message: 'Directory, file path or URL',
+        }),
+      );
+    }
+
+    const { type, value } = validateInput($inputArg);
 
     if (type === 'dir') {
       const { input, output } = await runDir(value);
