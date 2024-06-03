@@ -6,6 +6,7 @@ const extensions = [
   '@vercel/style-guide/eslint/node',
   '@vercel/style-guide/eslint/typescript',
 ].map(require.resolve);
+extensions.push('plugin:drizzle/recommended');
 
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
