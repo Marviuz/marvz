@@ -7,6 +7,7 @@ import { processMediaInput } from '@/lib/media/process-media-input';
 import { runURL } from '@/lib/media/url';
 import { validateInput } from '@/utils/validators/file-types';
 import { ensureString } from '@/utils/validators/is-string';
+import { mediaHistory } from './history';
 
 export const media = new Command()
   .name('media')
@@ -44,3 +45,5 @@ export const media = new Command()
 
     outro("You're all set!");
   });
+
+media.addCommand(mediaHistory);
