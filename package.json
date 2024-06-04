@@ -1,6 +1,7 @@
 {
   "name": "marvz",
   "version": "1.0.0",
+  "private": true,
   "description": "My personal helpers",
   "license": "MIT",
   "author": "Marviuz",
