@@ -12,7 +12,7 @@ export const mediaHistory = new Command()
     intro('Viewing history');
 
     try {
-      const { histItem, action } = await group(
+      const { histItem: historyItemId, action } = await group(
         {
           histItem: async () => {
             const history = await MediaHistoryController.all();
@@ -45,20 +45,22 @@ export const mediaHistory = new Command()
         },
       );
 
+      const item =
+        await MediaHistoryController.findOneByPublicId(historyItemId);
+      if (!item) throw new Error('Item not found');
+
       switch (action) {
         case 'open-file': {
-          const item = await MediaHistoryController.findOneByPublicId(histItem);
-          if (!item) throw new Error('Item not found');
           await open(item.to);
           break;
         }
         case 'open-dir': {
-          const dirname = path.dirname(histItem);
+          const dirname = path.dirname(item.to);
           await open(dirname);
           break;
         }
         case 'del-item-hist': {
-          await MediaHistoryController.remove(histItem);
+          await MediaHistoryController.remove(historyItemId);
           break;
         }
         default:
