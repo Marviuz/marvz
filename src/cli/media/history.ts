@@ -18,7 +18,7 @@ export const mediaHistory = new Command()
             const history = await MediaHistoryController.all();
 
             const options = history.map((hist) => ({
-              value: hist.to,
+              value: hist.publicId,
               label: hist.to,
             }));
 
@@ -33,6 +33,7 @@ export const mediaHistory = new Command()
               options: [
                 { value: 'open-file', label: 'Open file' },
                 { value: 'open-dir', label: 'Open directory' },
+                { value: 'del-item-hist', label: 'Delete item in history' },
               ],
             }),
         },
@@ -45,12 +46,19 @@ export const mediaHistory = new Command()
       );
 
       switch (action) {
-        case 'open-file':
-          await open(histItem);
+        case 'open-file': {
+          const item = await MediaHistoryController.findOneByPublicId(histItem);
+          if (!item) throw new Error('Item not found');
+          await open(item.to);
           break;
+        }
         case 'open-dir': {
           const dirname = path.dirname(histItem);
           await open(dirname);
+          break;
+        }
+        case 'del-item-hist': {
+          await MediaHistoryController.remove(histItem);
           break;
         }
         default:
