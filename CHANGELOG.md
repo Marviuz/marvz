@@ -1,5 +1,15 @@
 # marvz
 
+## 1.2.0
+
+### Minor Changes
+
+- fd2d60b: Adds removing of history item
+
+### Patch Changes
+
+- 40ef787: Refactors some parts of the code and used group to be able to cleanly cancel
+
 ## 1.1.0
 
 ### Minor Changes
