@@ -1,5 +1,12 @@
 # marvz
 
+## 1.3.2
+
+### Patch Changes
+
+- b5b678f: Adds ascii greeting for each command
+- b5bb6ac: Update readme to install CLI globally
+
 ## 1.3.1
 
 ### Patch Changes
