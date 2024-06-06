@@ -1,33 +1,24 @@
-import { eq, getTableColumns } from 'drizzle-orm';
-import { db } from '..';
-import { mediaHistory } from '../schema';
+import { MediaHistoryService } from '../services/media-history-service';
 import { type InsertMediaHistorySchema } from '../validations';
 
-const { id: _, ...rest } = getTableColumns(mediaHistory);
-
-function create(data: InsertMediaHistorySchema) {
-  return db.insert(mediaHistory).values(data).returning();
+function findAll() {
+  return MediaHistoryService.all();
 }
 
 function findOneByPublicId(publicId: string) {
-  return db.query.mediaHistory.findFirst({
-    where: eq(mediaHistory.publicId, publicId),
-  });
+  return MediaHistoryService.findOneByPublicId(publicId);
 }
 
-function all() {
-  return db.select(rest).from(mediaHistory);
+function create(data: InsertMediaHistorySchema) {
+  return MediaHistoryService.create(data);
 }
 
 function remove(publicId: string) {
-  return db
-    .delete(mediaHistory)
-    .where(eq(mediaHistory.publicId, publicId))
-    .returning();
+  return MediaHistoryService.remove(publicId);
 }
 
 export const MediaHistoryController = {
-  all,
+  findAll,
   findOneByPublicId,
   create,
   remove,

@@ -1,20 +1,27 @@
 import path from 'node:path';
-import { text } from '@clack/prompts';
-import { ensureString } from '@/utils/validators/is-string';
+import { cancel, group, text } from '@clack/prompts';
 
 export async function runURL(inputSrc: string) {
-  const outputPath = await text({
-    message: 'Where do you want to save?',
-  });
+  const { outputPath, outputFile } = await group(
+    {
+      outputPath: () =>
+        text({
+          message: 'Where do you want to save?',
+        }),
+      outputFile: () =>
+        text({
+          message: 'Filename',
+        }),
+    },
+    {
+      onCancel: () => {
+        cancel('Operation permitted!');
+        process.exit(0);
+      },
+    },
+  );
 
-  const outputFile = await text({
-    message: 'Filename',
-  });
-
-  const strOutputPath = ensureString(outputPath);
-  const strOutputFile = ensureString(outputFile);
-
-  const convertedOutput = path.resolve(strOutputPath, strOutputFile);
+  const convertedOutput = path.resolve(outputPath, outputFile);
 
   return {
     input: inputSrc,

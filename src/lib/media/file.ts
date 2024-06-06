@@ -1,6 +1,5 @@
 import path from 'node:path';
-import { text } from '@clack/prompts';
-import { ensureString } from '@/utils/validators/is-string';
+import { cancel, isCancel, text } from '@clack/prompts';
 
 export async function runFile(inputSrc: string) {
   const basename = path.basename(inputSrc);
@@ -11,9 +10,13 @@ export async function runFile(inputSrc: string) {
     initialValue: basename.toString().replace(/\.ts$/, '.mp4'),
   });
 
-  const stringOutput = ensureString(outputFile);
+  if (isCancel(outputFile)) {
+    cancel('Operation permitted.');
+    process.exit(0);
+  }
+
   const input = path.resolve(dirname, inputSrc);
-  const convertedOutput = path.resolve(dirname, stringOutput);
+  const convertedOutput = path.resolve(dirname, outputFile);
 
   return {
     input,
