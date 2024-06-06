@@ -1,15 +1,17 @@
 import path from 'node:path';
-import { cancel, group, intro, outro } from '@clack/prompts';
+import { cancel, group, intro, log, outro } from '@clack/prompts';
 import { Command } from 'commander';
 import open from 'open';
 import { MediaHistoryController } from '@/db/controllers/media-history-controller';
 import { select } from '@/utils/wrappers/clack';
+import { greet } from '@/utils/greet';
 
 export const mediaHistory = new Command()
   .name('history')
   .description('View conversion history')
   .action(async () => {
-    intro('Viewing history');
+    intro();
+    log.message(await greet('Media history'));
 
     try {
       const { histItem: historyItemId, action } = await group(
