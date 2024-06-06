@@ -10,12 +10,15 @@ import {
 } from '@clack/prompts';
 import { Command } from 'commander';
 import $git from 'simple-git';
+import { greet } from '@/utils/greet';
 
 export const clean = new Command()
   .name('clean-branches')
   .description('Delete selected loca branches')
   .action(async () => {
-    intro('Git helpers');
+    intro();
+    log.message(await greet('Clean branches'));
+
     const git = $git();
 
     const localBranches = Object.entries((await git.branchLocal()).branches);

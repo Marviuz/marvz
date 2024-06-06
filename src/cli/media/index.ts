@@ -1,10 +1,11 @@
-import { cancel, intro, isCancel, outro, text } from '@clack/prompts';
+import { cancel, intro, isCancel, log, outro, text } from '@clack/prompts';
 import { Command } from 'commander';
 import { z } from 'zod';
 import { runDir } from '@/lib/media/directory';
 import { runFile } from '@/lib/media/file';
-import { runURL } from '@/lib/media/url';
 import { processMediaInput } from '@/lib/media/process-media-input';
+import { runURL } from '@/lib/media/url';
+import { greet } from '@/utils/greet';
 import { validateInput } from '@/utils/validators/file-types';
 import { mediaHistory } from './history';
 
@@ -17,7 +18,9 @@ export const media = new Command()
   .action(async (inputArg) => {
     let $inputArg: Input = z.string().optional().parse(inputArg);
 
-    intro(
+    intro();
+    log.message(await greet('Media helpers'));
+    log.message(
       !$inputArg
         ? 'Convert/Download media using ffmpeg'
         : `Processing ${$inputArg}`,
