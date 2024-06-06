@@ -15,7 +15,7 @@ export const mediaHistory = new Command()
       const { histItem: historyItemId, action } = await group(
         {
           histItem: async () => {
-            const history = await MediaHistoryController.all();
+            const history = await MediaHistoryController.findAll();
 
             const options = history.map((hist) => ({
               value: hist.publicId,
