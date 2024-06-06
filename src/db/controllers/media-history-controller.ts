@@ -1,8 +1,11 @@
 import { MediaHistoryService } from '../services/media-history-service';
 import { type InsertMediaHistorySchema } from '../validations';
 
-function findAll() {
-  return MediaHistoryService.all();
+type FindAll = { sortBy: 'asc' | 'dsc' };
+function findAll(params?: Partial<FindAll>) {
+  return MediaHistoryService.all({
+    sortBy: params?.sortBy,
+  });
 }
 
 function findOneByPublicId(publicId: string) {

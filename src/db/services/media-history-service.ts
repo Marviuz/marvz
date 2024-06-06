@@ -16,8 +16,14 @@ function findOneByPublicId(publicId: string) {
   });
 }
 
-function all() {
+type AllParams = { sortBy: 'asc' | 'dsc' };
+function all(params?: Partial<AllParams>) {
   return db.query.mediaHistory.findMany({
+    orderBy: (history, { asc, desc }) => [
+      params?.sortBy === 'asc'
+        ? asc(history.createdAt)
+        : desc(history.createdAt),
+    ],
     columns: {
       id: false,
     },
