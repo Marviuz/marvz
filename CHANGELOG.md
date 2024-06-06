@@ -1,5 +1,11 @@
 # marvz
 
+## 1.3.0
+
+### Minor Changes
+
+- 84399ef: Adds branch cleaner which picking and deleting git branches
+
 ## 1.2.0
 
 ### Minor Changes
