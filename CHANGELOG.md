@@ -1,5 +1,11 @@
 # marvz
 
+## 1.3.1
+
+### Patch Changes
+
+- 4af5891: Update readme to install CLI globally
+
 ## 1.3.0
 
 ### Minor Changes
