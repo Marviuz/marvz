@@ -1,5 +1,11 @@
 # marvz
 
+## 1.3.3
+
+### Patch Changes
+
+- 9413741: Latest media conversion on top
+
 ## 1.3.2
 
 ### Patch Changes
