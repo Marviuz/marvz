@@ -1,5 +1,11 @@
 # marvz
 
+## 1.4.0
+
+### Minor Changes
+
+- fe306e1: publish to npm
+
 ## 1.3.3
 
 ### Patch Changes
