@@ -1,0 +1,5 @@
+---
+'marvz': patch
+---
+
+add npmignore
