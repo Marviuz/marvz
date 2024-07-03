@@ -1,5 +1,11 @@
 # marvz
 
+## 1.4.2
+
+### Patch Changes
+
+- 8edd76d: add npmignore
+
 ## 1.4.1
 
 ### Patch Changes
