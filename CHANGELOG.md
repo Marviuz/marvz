@@ -1,5 +1,11 @@
 # marvz
 
+## 1.4.1
+
+### Patch Changes
+
+- 451278d: remove private property in package.json
+
 ## 1.4.0
 
 ### Minor Changes
