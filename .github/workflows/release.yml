@@ -20,7 +20,7 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Build package
-        pnpm: pnpm build
+        run: pnpm build
 
       - name: Create release
         id: changesets
