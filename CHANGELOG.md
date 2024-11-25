@@ -1,5 +1,11 @@
 # marvz
 
+## 1.5.1
+
+### Patch Changes
+
+- a2aff87: Fix CI not building
+
 ## 1.5.0
 
 ### Minor Changes
