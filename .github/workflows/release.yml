@@ -19,6 +19,9 @@ jobs:
           fetch-depth: 0
       - uses: ./.github/actions/setup
 
+      - name: Build package
+        pnpm: pnpm build
+
       - name: Create release
         id: changesets
         uses: changesets/action@v1
