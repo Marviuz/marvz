@@ -14,19 +14,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
         with:
-          node-version: 20.x
-
-      - uses: oven-sh/setup-bun@v1
-        name: Install Bun
-
-      - name: Install dependencies
-        run: bun install
+          fetch-depth: 0
+      - uses: ./.github/actions/setup
 
       - name: Create release
         id: changesets
@@ -34,7 +25,7 @@ jobs:
         with:
           commit: 'chore(release): version application'
           title: 'chore(release): version application'
-          publish: npx changeset publish
+          publish: pnpx changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
