@@ -1,5 +1,11 @@
 # marvz
 
+## 1.5.0
+
+### Minor Changes
+
+- 929e7fe: Changed package manager to pnpm as bun is now working correctly
+
 ## 1.4.2
 
 ### Patch Changes
