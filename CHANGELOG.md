@@ -1,5 +1,11 @@
 # marvz
 
+## 1.5.2
+
+### Patch Changes
+
+- ed66519: Fix force delete branches
+
 ## 1.5.1
 
 ### Patch Changes
