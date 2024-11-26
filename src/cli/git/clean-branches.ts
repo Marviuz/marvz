@@ -62,7 +62,7 @@ export const clean = new Command()
     s.start('Forcefully deleting branches...');
 
     const attemptedBranches = Object.entries(
-      (await git.deleteLocalBranches(selectedBranches)).branches,
+      (await git.deleteLocalBranches(selectedBranches, true)).branches,
     );
 
     attemptedBranches.forEach(([branch, details]) => {
