@@ -1,5 +1,11 @@
 # marvz
 
+## 1.6.0
+
+### Minor Changes
+
+- 2d2093c: Bumps packages, removes nodejs version limitation. use default location for findCacheDir.
+
 ## 1.5.2
 
 ### Patch Changes
