@@ -23,7 +23,7 @@ module.exports = {
       },
     },
   },
-  ignorePatterns: ['./dist/*'],
+  ignorePatterns: ['dist/*', 'node_modules/*'],
   rules: {
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     '@typescript-eslint/consistent-type-imports': [
