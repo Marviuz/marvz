@@ -1,5 +1,11 @@
 # marvz
 
+## 1.7.0
+
+### Minor Changes
+
+- ff3c7f1: Removes media history command as the database requires some kind of access
+
 ## 1.6.0
 
 ### Minor Changes
