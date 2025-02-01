@@ -1,5 +1,11 @@
 # marvz
 
+## 1.7.1
+
+### Patch Changes
+
+- 1a91b9b: Remove unnecessary package
+
 ## 1.7.0
 
 ### Minor Changes
